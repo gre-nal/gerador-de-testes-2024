@@ -1,5 +1,7 @@
 <h1 align="center">Gerador de Testes - dupla Gre-Nal
 
+---
+
 ![OIP](https://github.com/gre-nal/gerador-de-testes-2024/assets/162226403/3ebda480-fd8e-466d-ac1b-cc328916dc20)
 
 ---
