@@ -2,9 +2,13 @@
 
 ![OIP](https://github.com/gre-nal/gerador-de-testes-2024/assets/162226403/3ebda480-fd8e-466d-ac1b-cc328916dc20)
 
+---
+
 ## Projeto
 
 Desenvolvido durante o curso Fullstack da [Academia do Programador](https://www.academiadoprogramador.net) 2024</h1>
+
+---
 
 ## Especificações
 
@@ -162,7 +166,9 @@ Critérios:**
 Critérios:**
 * O arquivo PDF do Gabarito do Teste deve apresentar: Título, Disciplina, Matéria, as questões e suas alternativas (com a alternativa correta assinalada)
 
-  # Autores
+---
+
+# Autores
 
 | [<img loading="lazy" src="https://avatars.githubusercontent.com/u/162226403?v=4" width=115><br><sub>Gustavo Fontana</sub>](https://github.com/gucfontana) |  [<img loading="lazy" src="https://avatars.githubusercontent.com/u/112667064?v=4" width=115><br><sub>Matheus Branco</sub>](https://github.com/Matheus-Branco) | |
 | :---: | :---: | :---: |
