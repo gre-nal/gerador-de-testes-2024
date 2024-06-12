@@ -1,4 +1,5 @@
-﻿namespace gerador_de_testes_2024.ModuloQuestão
+﻿
+namespace gerador_de_testes_2024.ModuloQuestão
 {
     partial class TelaQuestao
     {
@@ -28,180 +29,214 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaQuestao));
             labelMateria = new Label();
             labelEnunciado = new Label();
             label3 = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            textBoxEnunciado = new TextBox();
             buttonAdicionar = new Button();
             groupBoxAlternativas = new GroupBox();
+            textBoxAlternativaD = new TextBox();
+            textBoxAlternativaC = new TextBox();
+            textBoxAlternativaB = new TextBox();
+            textBoxAlternativaA = new TextBox();
+            labelD = new Label();
+            labelB = new Label();
+            labelC = new Label();
+            labelA = new Label();
             buttonRemover = new Button();
             buttonCancelar = new Button();
             buttonGravar = new Button();
-            checkBoxA = new CheckBox();
-            checkBoxB = new CheckBox();
-            checkBoxC = new CheckBox();
-            checkBoxD = new CheckBox();
+            comboBoxMateria = new ComboBox();
+            comboBoxResposta = new ComboBox();
+            labelSerie = new Label();
+            radioButton1 = new RadioButton();
+            radioButton2 = new RadioButton();
             groupBoxAlternativas.SuspendLayout();
             SuspendLayout();
             // 
             // labelMateria
             // 
-            labelMateria.AutoSize = true;
-            labelMateria.ImageAlign = ContentAlignment.MiddleRight;
-            labelMateria.Location = new Point(35, 54);
+            resources.ApplyResources(labelMateria, "labelMateria");
             labelMateria.Name = "labelMateria";
-            labelMateria.Size = new Size(50, 15);
-            labelMateria.TabIndex = 0;
-            labelMateria.Text = "Matéria:";
             // 
             // labelEnunciado
             // 
-            labelEnunciado.AutoSize = true;
-            labelEnunciado.ImageAlign = ContentAlignment.MiddleRight;
-            labelEnunciado.Location = new Point(19, 127);
+            resources.ApplyResources(labelEnunciado, "labelEnunciado");
             labelEnunciado.Name = "labelEnunciado";
-            labelEnunciado.Size = new Size(66, 15);
-            labelEnunciado.TabIndex = 1;
-            labelEnunciado.Text = "Enunciado:";
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.ImageAlign = ContentAlignment.MiddleRight;
-            label3.Location = new Point(28, 202);
+            resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            label3.Size = new Size(57, 15);
-            label3.TabIndex = 2;
-            label3.Text = "Resposta:";
             // 
-            // textBox1
+            // textBoxEnunciado
             // 
-            textBox1.Location = new Point(91, 101);
-            textBox1.Multiline = true;
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(317, 69);
-            textBox1.TabIndex = 3;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(91, 199);
-            textBox2.Multiline = true;
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(236, 31);
-            textBox2.TabIndex = 4;
+            resources.ApplyResources(textBoxEnunciado, "textBoxEnunciado");
+            textBoxEnunciado.Name = "textBoxEnunciado";
             // 
             // buttonAdicionar
             // 
-            buttonAdicionar.Location = new Point(333, 202);
+            resources.ApplyResources(buttonAdicionar, "buttonAdicionar");
             buttonAdicionar.Name = "buttonAdicionar";
-            buttonAdicionar.Size = new Size(75, 31);
-            buttonAdicionar.TabIndex = 5;
-            buttonAdicionar.Text = "Adicionar";
             buttonAdicionar.UseVisualStyleBackColor = true;
             buttonAdicionar.Click += buttonAdicionar_Click;
             // 
             // groupBoxAlternativas
             // 
-            groupBoxAlternativas.Controls.Add(checkBoxD);
-            groupBoxAlternativas.Controls.Add(checkBoxC);
-            groupBoxAlternativas.Controls.Add(checkBoxB);
-            groupBoxAlternativas.Controls.Add(checkBoxA);
+            groupBoxAlternativas.Controls.Add(textBoxAlternativaD);
+            groupBoxAlternativas.Controls.Add(textBoxAlternativaC);
+            groupBoxAlternativas.Controls.Add(textBoxAlternativaB);
+            groupBoxAlternativas.Controls.Add(textBoxAlternativaA);
+            groupBoxAlternativas.Controls.Add(labelD);
+            groupBoxAlternativas.Controls.Add(labelB);
+            groupBoxAlternativas.Controls.Add(labelC);
+            groupBoxAlternativas.Controls.Add(labelA);
             groupBoxAlternativas.Controls.Add(buttonRemover);
-            groupBoxAlternativas.Location = new Point(35, 270);
+            resources.ApplyResources(groupBoxAlternativas, "groupBoxAlternativas");
             groupBoxAlternativas.Name = "groupBoxAlternativas";
-            groupBoxAlternativas.Size = new Size(373, 204);
-            groupBoxAlternativas.TabIndex = 6;
             groupBoxAlternativas.TabStop = false;
-            groupBoxAlternativas.Text = "Alternativas:";
+            // 
+            // textBoxAlternativaD
+            // 
+            textBoxAlternativaD.BackColor = SystemColors.Control;
+            resources.ApplyResources(textBoxAlternativaD, "textBoxAlternativaD");
+            textBoxAlternativaD.Name = "textBoxAlternativaD";
+            // 
+            // textBoxAlternativaC
+            // 
+            textBoxAlternativaC.BackColor = SystemColors.Control;
+            resources.ApplyResources(textBoxAlternativaC, "textBoxAlternativaC");
+            textBoxAlternativaC.Name = "textBoxAlternativaC";
+            // 
+            // textBoxAlternativaB
+            // 
+            textBoxAlternativaB.BackColor = SystemColors.Control;
+            resources.ApplyResources(textBoxAlternativaB, "textBoxAlternativaB");
+            textBoxAlternativaB.Name = "textBoxAlternativaB";
+            // 
+            // textBoxAlternativaA
+            // 
+            textBoxAlternativaA.BackColor = SystemColors.Control;
+            resources.ApplyResources(textBoxAlternativaA, "textBoxAlternativaA");
+            textBoxAlternativaA.Name = "textBoxAlternativaA";
+            // 
+            // labelD
+            // 
+            resources.ApplyResources(labelD, "labelD");
+            labelD.Name = "labelD";
+            // 
+            // labelB
+            // 
+            resources.ApplyResources(labelB, "labelB");
+            labelB.Name = "labelB";
+            // 
+            // labelC
+            // 
+            resources.ApplyResources(labelC, "labelC");
+            labelC.Name = "labelC";
+            // 
+            // labelA
+            // 
+            resources.ApplyResources(labelA, "labelA");
+            labelA.Name = "labelA";
             // 
             // buttonRemover
             // 
-            buttonRemover.Location = new Point(6, 22);
+            resources.ApplyResources(buttonRemover, "buttonRemover");
             buttonRemover.Name = "buttonRemover";
-            buttonRemover.Size = new Size(75, 31);
-            buttonRemover.TabIndex = 9;
-            buttonRemover.Text = "Remover";
             buttonRemover.UseVisualStyleBackColor = true;
+            buttonRemover.Click += buttonRemover_Click;
             // 
             // buttonCancelar
             // 
-            buttonCancelar.Location = new Point(359, 537);
+            resources.ApplyResources(buttonCancelar, "buttonCancelar");
             buttonCancelar.Name = "buttonCancelar";
-            buttonCancelar.Size = new Size(75, 31);
-            buttonCancelar.TabIndex = 7;
-            buttonCancelar.Text = "Cancelar";
             buttonCancelar.UseVisualStyleBackColor = true;
             // 
             // buttonGravar
             // 
-            buttonGravar.Location = new Point(278, 537);
+            resources.ApplyResources(buttonGravar, "buttonGravar");
             buttonGravar.Name = "buttonGravar";
-            buttonGravar.Size = new Size(75, 31);
-            buttonGravar.TabIndex = 8;
-            buttonGravar.Text = "Gravar";
             buttonGravar.UseVisualStyleBackColor = true;
             // 
-            // checkBoxA
+            // comboBoxMateria
             // 
-            checkBoxA.AutoSize = true;
-            checkBoxA.Location = new Point(6, 59);
-            checkBoxA.Name = "checkBoxA";
-            checkBoxA.Size = new Size(38, 19);
-            checkBoxA.TabIndex = 10;
-            checkBoxA.Text = "A)";
-            checkBoxA.UseVisualStyleBackColor = true;
+            comboBoxMateria.FormattingEnabled = true;
+            resources.ApplyResources(comboBoxMateria, "comboBoxMateria");
+            comboBoxMateria.Name = "comboBoxMateria";
             // 
-            // checkBoxB
+            // comboBoxResposta
             // 
-            checkBoxB.AutoSize = true;
-            checkBoxB.Location = new Point(6, 84);
-            checkBoxB.Name = "checkBoxB";
-            checkBoxB.Size = new Size(37, 19);
-            checkBoxB.TabIndex = 11;
-            checkBoxB.Text = "B)";
-            checkBoxB.UseVisualStyleBackColor = true;
+            comboBoxResposta.FormattingEnabled = true;
+            resources.ApplyResources(comboBoxResposta, "comboBoxResposta");
+            comboBoxResposta.Name = "comboBoxResposta";
             // 
-            // checkBoxC
+            // labelSerie
             // 
-            checkBoxC.AutoSize = true;
-            checkBoxC.Location = new Point(6, 109);
-            checkBoxC.Name = "checkBoxC";
-            checkBoxC.Size = new Size(38, 19);
-            checkBoxC.TabIndex = 12;
-            checkBoxC.Text = "C)";
-            checkBoxC.UseVisualStyleBackColor = true;
+            resources.ApplyResources(labelSerie, "labelSerie");
+            labelSerie.Name = "labelSerie";
             // 
-            // checkBoxD
+            // radioButton1
             // 
-            checkBoxD.AutoSize = true;
-            checkBoxD.Location = new Point(6, 134);
-            checkBoxD.Name = "checkBoxD";
-            checkBoxD.Size = new Size(38, 19);
-            checkBoxD.TabIndex = 13;
-            checkBoxD.Text = "D)";
-            checkBoxD.UseVisualStyleBackColor = true;
+            resources.ApplyResources(radioButton1, "radioButton1");
+            radioButton1.Name = "radioButton1";
+            radioButton1.TabStop = true;
+            radioButton1.UseVisualStyleBackColor = true;
+            radioButton1.CheckedChanged += radioButton1_CheckedChanged;
+            // 
+            // radioButton2
+            // 
+            resources.ApplyResources(radioButton2, "radioButton2");
+            radioButton2.Name = "radioButton2";
+            radioButton2.TabStop = true;
+            radioButton2.UseVisualStyleBackColor = true;
+            radioButton2.CheckedChanged += radioButton2_CheckedChanged;
             // 
             // TelaQuestao
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(446, 580);
+            Controls.Add(radioButton2);
+            Controls.Add(radioButton1);
+            Controls.Add(labelSerie);
+            Controls.Add(comboBoxResposta);
+            Controls.Add(comboBoxMateria);
             Controls.Add(buttonGravar);
             Controls.Add(buttonCancelar);
             Controls.Add(groupBoxAlternativas);
             Controls.Add(buttonAdicionar);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(textBoxEnunciado);
             Controls.Add(label3);
             Controls.Add(labelEnunciado);
             Controls.Add(labelMateria);
+            MaximizeBox = false;
+            MinimizeBox = false;
             Name = "TelaQuestao";
-            Text = "TelaQuestao";
             groupBoxAlternativas.ResumeLayout(false);
             groupBoxAlternativas.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void buttonRemover_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void buttonAdicionar_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -209,16 +244,25 @@
         private Label labelMateria;
         private Label labelEnunciado;
         private Label label3;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox textBoxEnunciado;
         private Button buttonAdicionar;
         private GroupBox groupBoxAlternativas;
         private Button buttonRemover;
         private Button buttonCancelar;
         private Button buttonGravar;
-        private CheckBox checkBoxA;
-        private CheckBox checkBoxD;
-        private CheckBox checkBoxC;
-        private CheckBox checkBoxB;
+        private ComboBox comboBoxMateria;
+        private ComboBox comboBoxResposta;
+        private Label labelD;
+        private Label labelB;
+        private Label labelC;
+        private Label label1;
+        private Label labelA;
+        private Label labelSerie;
+        private RadioButton radioButton1;
+        private RadioButton radioButton2;
+        private TextBox textBoxAlternativaD;
+        private TextBox textBoxAlternativaC;
+        private TextBox textBoxAlternativaB;
+        private TextBox textBoxAlternativaA;
     }
 }

@@ -9,9 +9,10 @@ namespace gerador_de_testes_2024.ModuloQuestão
 {
     public class Questao : EntidadeBase
     {
-        public Questao(string materia, string enunciado, bool alternativaA, bool alternativaB, bool alternativaC, bool alternativaD, int maxAlternativa, int minAlternativa, string alternativaCorreta)
+        public Questao(string materia, string serie, string enunciado, string alternativaA, string alternativaB, string alternativaC, string alternativaD, int maxAlternativa, int minAlternativa, string alternativaCorreta)
         {
             this.materia = materia;
+            this.serie = serie;
             this.enunciado = enunciado;
             this.alternativaA = alternativaA;
             this.alternativaB = alternativaB;
@@ -23,11 +24,12 @@ namespace gerador_de_testes_2024.ModuloQuestão
         }
 
         public string materia { get; set; }
+        public string serie {  get; set; }
         public string enunciado { get; set; }
-        public bool alternativaA { get; set; }
-        public bool alternativaB { get; set; }
-        public bool alternativaC { get; set; }
-        public bool alternativaD { get; set; }
+        public string alternativaA { get; set; }
+        public string alternativaB { get; set; }
+        public string alternativaC { get; set; }
+        public string alternativaD { get; set; }
         public int maxAlternativa { get; set; }
         public int minAlternativa { get; set; }
         public string alternativaCorreta {  get; set; }
@@ -44,6 +46,7 @@ namespace gerador_de_testes_2024.ModuloQuestão
             alternativaB = atualizado.alternativaB;
             alternativaC = atualizado.alternativaC;
             alternativaD = atualizado.alternativaD;
+            alternativaCorreta = atualizado.alternativaCorreta;
         }
 
         public override List<string> Validar()
@@ -54,8 +57,6 @@ namespace gerador_de_testes_2024.ModuloQuestão
             VerificarNulo(ref erros, enunciado, "enunciado");
             VerificarNulo(ref erros, alternativaA, "alternativa A");
             VerificarNulo(ref erros, alternativaB, "alternativa B");
-            VerificarNulo(ref erros, alternativaC, "alternativa C");
-            VerificarNulo(ref erros, alternativaD, "alternativa D");
             VerificarNulo(ref erros, alternativaCorreta, "alternativaCorreta");
             VerificarNulo(ref erros, maxAlternativa, "máximo de alternativas");
             VerificarNulo(ref erros, minAlternativa, "mínimo de alternativas");
