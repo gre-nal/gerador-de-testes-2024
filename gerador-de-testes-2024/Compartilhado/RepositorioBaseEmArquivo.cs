@@ -1,7 +1,9 @@
-﻿using System.Text.Json;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.Text.Json;
 using System.Text.Json.Serialization;
 
-namespace gerador_de_testes_2024.WinApp.Compartilhado;
+namespace gerador_de_testes_2024.Compartilhado;
 
 public class RepositorioBaseEmArquivo<T>
 {
@@ -11,7 +13,7 @@ public class RepositorioBaseEmArquivo<T>
 
     public RepositorioBaseEmArquivo(string nomeArquivo)
     {
-        caminho = $"C:\\temp\\FestasInfantis\\{nomeArquivo}";
+        caminho = $"C:\\temp\\GeradorTestes\\{nomeArquivo}";
 
         registros = DeserializarRegistros();
     }

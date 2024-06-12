@@ -1,4 +1,4 @@
-﻿namespace gerador_de_testes_2024.WinApp.Compartilhado;
+﻿namespace gerador_de_testes_2024.Compartilhado;
 
 public abstract class RepositorioBaseEmMemoria<T> where T : EntidadeBase
 {
