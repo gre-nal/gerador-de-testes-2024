@@ -1,55 +1,29 @@
-﻿namespace gerador_de_testes_2024.ModuloMateria
+﻿using gerador_de_testes_2024.Compartilhado;
+
+namespace gerador_de_testes_2024.ModuloMateria
 {
-    public class ControladorMateria
+    public class ControladorMateria : ControladorBase
     {
         private List<Materia> materias = new List<Materia>();
         private int ultimoId = 0;
+        public override string TipoCadastro { get; }
+        public override string ToolTipAdicionar { get; }
+        public override string ToolTipEditar { get; }
+        public override string ToolTipExcluir { get; }
 
-        public bool AdicionarMateria(string nome, string disciplina, string serie)
+        public override void Adicionar()
         {
-            if (string.IsNullOrWhiteSpace(nome) || string.IsNullOrWhiteSpace(disciplina) ||
-                string.IsNullOrWhiteSpace(serie) ||
-                materias.Any(m => m.Nome == nome))
-            {
-                return false;
-            }
-
-            materias.Add(new Materia(++ultimoId, nome, disciplina, serie));
-            return true;
+            throw new NotImplementedException();
         }
 
-        public bool EditarMateria(int id, string novoNome, string novaDisciplina, string novaSerie)
+        public override void Editar()
         {
-            var materia = materias.FirstOrDefault(m => m.Id == id);
-            if (materia == null || string.IsNullOrWhiteSpace(novoNome) || string.IsNullOrWhiteSpace(novaDisciplina) ||
-                string.IsNullOrWhiteSpace(novaSerie) ||
-                materias.Any(m => m.Nome == novoNome && m.Id != id))
-            {
-                return false;
-            }
-
-            materia.Nome = novoNome;
-            materia.Disciplina = novaDisciplina;
-            materia.Serie = novaSerie;
-            return true;
+            throw new NotImplementedException();
         }
 
-        public bool ExcluirMateria(int id)
+        public override void Excluir()
         {
-            var materia = materias.FirstOrDefault(m => m.Id == id);
-            // Aqui você precisaria verificar se a materia está sendo usada em um teste antes de excluir
-            if (materia == null /* || questão está sendo usada em um teste */)
-            {
-                return false;
-            }
-
-            materias.Remove(materia);
-            return true;
-        }
-
-        public List<Materia> ListarMaterias()
-        {
-            return materias;
+            throw new NotImplementedException();
         }
     }
 }

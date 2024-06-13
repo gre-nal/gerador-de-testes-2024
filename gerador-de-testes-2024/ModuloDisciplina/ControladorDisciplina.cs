@@ -1,49 +1,29 @@
-﻿namespace gerador_de_testes_2024.ModuloDisciplina
+﻿using gerador_de_testes_2024.Compartilhado;
+
+namespace gerador_de_testes_2024.ModuloDisciplina
 {
-    public class ControladorDisciplina
+    public class ControladorDisciplina : ControladorBase
     {
         private List<Disciplina> disciplinas = new List<Disciplina>();
         private int ultimoId = 0;
+        public override string TipoCadastro { get; }
+        public override string ToolTipAdicionar { get; }
+        public override string ToolTipEditar { get; }
+        public override string ToolTipExcluir { get; }
 
-        public bool AdicionarDisciplina(string nome)
+        public override void Adicionar()
         {
-            if (string.IsNullOrWhiteSpace(nome) || disciplinas.Any(d => d.Nome == nome))
-            {
-                return false;
-            }
-
-            disciplinas.Add(new Disciplina(++ultimoId, nome));
-            return true;
+            throw new NotImplementedException();
         }
 
-        public bool EditarDisciplina(int id, string novoNome)
+        public override void Editar()
         {
-            var disciplina = disciplinas.FirstOrDefault(d => d.Id == id);
-            if (disciplina == null || string.IsNullOrWhiteSpace(novoNome) ||
-                disciplinas.Any(d => d.Nome == novoNome && d.Id != id))
-            {
-                return false;
-            }
-
-            disciplina.Nome = novoNome;
-            return true;
+            throw new NotImplementedException();
         }
 
-        public bool ExcluirDisciplina(int id)
+        public override void Excluir()
         {
-            var disciplina = disciplinas.FirstOrDefault(d => d.Id == id);
-            if (disciplina == null || disciplina.Materias.Any())
-            {
-                return false;
-            }
-
-            disciplinas.Remove(disciplina);
-            return true;
-        }
-
-        public List<Disciplina> ListarDisciplinas()
-        {
-            return disciplinas;
+            throw new NotImplementedException();
         }
     }
 }

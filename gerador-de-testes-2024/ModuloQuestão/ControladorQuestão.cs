@@ -1,56 +1,30 @@
-﻿namespace gerador_de_testes_2024.ModuloQuestao
+﻿using gerador_de_testes_2024.Compartilhado;
+
+namespace gerador_de_testes_2024.ModuloQuestao
 {
-    public class ControladorQuestao
+    public class ControladorQuestao : ControladorBase
     {
         private List<Questao> questoes = new List<Questao>();
         private int ultimoId = 0;
 
-        public bool AdicionarQuestao(string materia, string enunciado, List<Alternativa> alternativas)
-        {
-            if (string.IsNullOrWhiteSpace(materia) || string.IsNullOrWhiteSpace(enunciado) || alternativas.Count < 2 || alternativas.Count > 4 || alternativas.Count(a => a.Correta) != 1)
-            {
-                return false;
-            }
+        public override string TipoCadastro { get; }
+        public override string ToolTipAdicionar { get; }
+        public override string ToolTipEditar { get; }
+        public override string ToolTipExcluir { get; }
 
-            var questao = new Questao(++ultimoId, materia, enunciado);
-            foreach (var alternativa in alternativas)
-            {
-                questao.AdicionarAlternativa(alternativa);
-            }
-            questoes.Add(questao);
-            return true;
+        public override void Adicionar()
+        {
+            throw new NotImplementedException();
         }
 
-        public bool EditarQuestao(int id, string novaMateria, string novoEnunciado, List<Alternativa> novasAlternativas)
+        public override void Editar()
         {
-            var questao = questoes.FirstOrDefault(q => q.Id == id);
-            if (questao == null || string.IsNullOrWhiteSpace(novaMateria) || string.IsNullOrWhiteSpace(novoEnunciado) || novasAlternativas.Count < 2 || novasAlternativas.Count > 4 || novasAlternativas.Count(a => a.Correta) != 1)
-            {
-                return false;
-            }
-
-            questao.Materia = novaMateria;
-            questao.Enunciado = novoEnunciado;
-            questao.Alternativas = novasAlternativas;
-            return true;
+            throw new NotImplementedException();
         }
 
-        public bool ExcluirQuestao(int id)
+        public override void Excluir()
         {
-            var questao = questoes.FirstOrDefault(q => q.Id == id);
-            // Aqui você precisaria verificar se a questão está sendo usada em um teste antes de excluir
-            if (questao == null /* || questão está sendo usada em um teste */)
-            {
-                return false;
-            }
-
-            questoes.Remove(questao);
-            return true;
-        }
-
-        public List<Questao> ListarQuestoes()
-        {
-            return questoes;
+            throw new NotImplementedException();
         }
     }
 }
