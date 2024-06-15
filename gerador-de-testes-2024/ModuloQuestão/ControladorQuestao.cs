@@ -24,100 +24,99 @@ namespace gerador_de_testes_2024.ModuloQuestão
 
         public override void Adicionar()
         {
-            var id = repositorioQuestao.();
+            var id = repositorioQuestao();
 
             var telaQuestao = new TelaQuestaoForm(id);
             var resultado = telaQuestao.ShowDialog();
 
             if (resultado != DialogResult.OK) return;
 
-            var novoItem = telaItem.Item;
+            var novoQuestao = telaQuestao;
 
             RealizarAção(
-                () => repositorioItem.Cadastrar(novoItem),
-                novoItem, "criado");
+                () => repositorioQuestao.Cadastrar(novoQuestao),
+                novoQuestao, "criado");
 
             id++;
         }
 
         public override void Editar()
         {
-            var idSelecionado = tabelaItens.ObterRegistroSelecionado();
+            var idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
 
-            var telaItem = new TelaItemForm(idSelecionado);
+            var telaQuestao = new TelaQuestaoForm(idSelecionado);
 
-            var itemSelecionado = repositorioItem.SelecionarPorId(idSelecionado);
+            var questaoSelecionado = repositorioQuestao.SelecionarPorId(idSelecionado);
 
-            if (NoSelection(itemSelecionado)) return;
+            if (NoSelection(questaoSelecionado)) return;
 
-            telaItem.Item = itemSelecionado;
+            telaQuestao.Item = questaoSelecionado;
 
-            var resultado = telaItem.ShowDialog();
+            var resultado = telaQuestao.ShowDialog();
 
             if (resultado != DialogResult.OK) return;
 
-            var temaEditado = telaItem.Item;
+            var questaoEditado = telaQuestao.Item;
 
             RealizarAção(
-                () => repositorioItem.Editar(itemSelecionado.Id, temaEditado),
-                temaEditado, "editado");
+                () => repositorioQuestao.Editar(questaoSelecionado.Id, questaoEditado),
+                questaoEditado, "editado");
         }
 
         public override void Excluir()
         {
-            var idSelecionado = tabelaItens.ObterRegistroSelecionado();
+            var idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
 
-            var itemSelecionado = repositorioItem.SelecionarPorId(idSelecionado);
+            var QuestaoSelecionado = repositorioQuestao.SelecionarPorId(idSelecionado);
 
-            if (NoSelection(itemSelecionado)) return;
+            if (NoSelection(QuestaoSelecionado)) return;
 
             var resposta = MessageBox.Show(
-                $"Excluir o registro \"{itemSelecionado.Descrição}\"?",
+                $"Excluir o registro \"{QuestaoSelecionado.Descrição}\"?",
                 "OK",
                 MessageBoxButtons.YesNo,
                 MessageBoxIcon.Warning);
 
             if (resposta != DialogResult.Yes) return;
 
-            itemSelecionado.Valor = 0;
 
             RealizarAção(
-                () => repositorioItem.Excluir(itemSelecionado.Id),
-                itemSelecionado, "excluído");
+                () => repositorioQuestao.Excluir(questaoSelecionado.Id),
+                QuestaoSelecionado, "excluído");
         }
 
         public override UserControl ObterListagem()
         {
-            tabelaItens ??= new TabelaItemControl();
+            tabelaQuestao ??= new TabelaQuestaoControl();
 
             CarregarItems();
-            return tabelaItens;
+            return tabelaQuestao;
         }
 
         private void CarregarItems()
         {
-            var itens = repositorioItem.SelecionarTodos();
+            var QuestaoSelecionado = repositorioQuestao.SelecionarTodos();
 
-            tabelaItens.AtualizarRegistros(itens);
+            tabelaQuestao.AtualizarRegistros(questao);
         }
 
-        private void CarregarMensagem(Item item, string texto)
+        private void CarregarMensagem(Questao questao)
         {
             TelaPrincipalForm
                 .Instancia
-                .AtualizarRodape($"O registro \"{item.Descrição}\" foi {texto} com sucesso!");
+                .AtualizarRodape($"O registro \"{questao.enunciado}\" foi concluído com sucesso!");
         }
 
-        private void RealizarAção(Action acao, Item tema, string texto)
+        private void RealizarAção(Action acao, Questao questao)
         {
             acao();
             CarregarItems();
-            CarregarMensagem(tema, texto);
+            CarregarMensagem(questao);
         }
 
-        private bool NoSelection(Item item)
+        private bool NoSelection(Questao questao)
         {
-            return item == null;
+            return questao == null;
         }
 
     }
