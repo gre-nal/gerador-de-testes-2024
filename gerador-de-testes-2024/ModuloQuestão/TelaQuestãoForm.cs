@@ -1,5 +1,4 @@
 ﻿using gerador_de_testes_2024.Compartilhado;
-using gerador_de_testes_2024.ModuloMateria;
 using gerador_de_testes_2024.ModuloQuestao;
 using System;
 using System.Collections.Generic;
@@ -23,7 +22,7 @@ namespace gerador_de_testes_2024.ModuloQuestão
             public void AtualizarRegistros(List<Questao> questaos)
             {
                 foreach (var q in questaos)
-                    .Rows.Add(m.Id);
+                    .Rows.Add(q.Id);
             }
 
             public int ObertRegistroSelecionado()

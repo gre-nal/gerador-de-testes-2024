@@ -27,7 +27,7 @@ namespace gerador_de_testes_2024.ModuloMatéria
                 GridMateria.Rows.Add(m.Id, m.Serie, m.Disciplina, m.Nome);
         }
 
-        public int ObertRegistroSelecionado()
+        public int ObterRegistroSelecionado()
         {
             return GridMateria.SelecionarId();
         }

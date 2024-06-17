@@ -35,9 +35,9 @@
             // gridQuestao
             // 
             gridQuestao.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gridQuestao.Location = new Point(3, 3);
+            gridQuestao.Location = new Point(0, 0);
             gridQuestao.Name = "gridQuestao";
-            gridQuestao.Size = new Size(147, 147);
+            gridQuestao.Size = new Size(150, 150);
             gridQuestao.TabIndex = 0;
             // 
             // TabelaQuestaoControl

@@ -16,47 +16,52 @@ namespace gerador_de_testes_2024.ModuloMateria
 
         public override void Adicionar()
         {
-            var id = repositorioMateria.PegarId();
+            var novaMateria = ObterDadosMateriaDoUsuario();
 
-            var telaMateria = new TelaMateriaForm(id);
-            var resultado = telaMateria.ShowDialog();
-
-            if (resultado != DialogResult.OK) return;
-
-            var novaMateria = telaMateria;
+            if (novaMateria == null) return;
 
             repositorioMateria.Cadastrar(novaMateria);
-            id++;
+        }
+
+        private Materia ObterDadosMateriaDoUsuario()
+        {
+            var novaMateria = new Materia
+            {
+                Id = repositorioMateria.PegarId(),
+                Nome = "Nome da Matéria",
+                Disciplina = "Descrição da Matéria",
+                Serie = "Série da Matéria",
+            };
+
+            return novaMateria;
         }
 
         public override void Editar()
         {
-            var idSelecionado = tabelaMateria.ObertRegistroSelecionado();
-            var telaMateria = new TelaMateriaForm(idSelecionado);
-            var materiaSelecionado = repositorioMateria.SelecionarPorId(idSelecionado);
+            var idSelecionado = tabelaMateria.ObterRegistroSelecionado();
 
-            if(materiaSelecionado == null)
-            {
-                MessageBox.Show(
-                "Não é possível realizar esta ação sem um registro selecionado.",
-                "Aviso",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Warning
-            );
-                return;
-            }
-            telaMateria = materiaSelecionado;
+            var materiaSelecionada = repositorioMateria.SelecionarPorId(idSelecionado);
 
-            var resultado = telaMateria.ShowDialog();
-            if (resultado != DialogResult.OK) return;
+            if (SemSeleção(materiaSelecionada)) return;
 
-            var materiaEditado = telaMateria;
-            repositorioMateria.Editar(materiaSelecionado.Id, materiaEditado);
+            var dadosAtualizados = ObterDadosAtualizadosDoUsuario(materiaSelecionada);
+
+            if (dadosAtualizados == null) return;
+
+            repositorioMateria.Editar(materiaSelecionada.Id, dadosAtualizados);
+        }
+
+        private Materia ObterDadosAtualizadosDoUsuario(Materia materiaAtual)
+        {
+            materiaAtual.Nome = "Novo Nome da Matéria";
+            materiaAtual.Serie = "Nova Série da Matéria";
+
+            return materiaAtual;
         }
 
         public override void Excluir()
         {
-            var idSelecionado = tabelaMateria.ObertRegistroSelecionado();
+            var idSelecionado = tabelaMateria.ObterRegistroSelecionado();
 
             var materiaSelecionado = repositorioMateria.SelecionarPorId(idSelecionado);
 

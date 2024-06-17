@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using gerador_de_testes_2024.WinApp.Compartilhado;
+﻿using gerador_de_testes_2024.Compartilhado;
+using gerador_de_testes_2024.ModuloQuestao;
 
 namespace gerador_de_testes_2024.ModuloQuestão
 {
-    internal class ControladorQuestao(IRepositorioQuestao repositorioQuestao) : ControladorBase
+    public class ControladorQuestao(IRepositorioQuestao repositorioQuestao) : ControladorBase
     {
         private readonly IRepositorioQuestao repositorioQuestao = repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestao;
@@ -22,56 +18,46 @@ namespace gerador_de_testes_2024.ModuloQuestão
 
         public override void Adicionar()
         {
-            var id = repositorioQuestao.PegarId();
+            var novaQuestao = ObterDadosQuestaoDoUsuario();
 
-            var telaQuestao = new TelaQuestaoForm(id);
-            var resultado = telaQuestao.ShowDialog();
-
-            if (resultado != DialogResult.OK) return;
-
-            var novaQuestao = telaQuestao;
+            if (novaQuestao == null) return;
 
             repositorioQuestao.Cadastrar(novaQuestao);
+        }
 
-            CarregarQuestoes();
+        private Questao ObterDadosQuestaoDoUsuario()
+        {
+            var novaQuestao = new Questao
+            {
+                Id = repositorioQuestao.PegarId(),
+                Enunciado = "Enunciado da questão",
+                Materia = "Mateira da questão"
+            };
 
-            //TelaPrincipalForm
-            //    .Instancia
-            //    .AtualizarRodape($"A \"questão\" foi criada com sucesso!");
-
-            id++;
+            return novaQuestao;
         }
 
         public override void Editar()
         {
             var idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
 
-            var telaQuestao = new TelaQuestaoForm(idSelecionado);
+            var questaoSelecionada = repositorioQuestao.SelecionarPorId(idSelecionado);
 
-            var questaoSelecionado =
-                repositorioQuestao.SelecionarPorId(idSelecionado);
+            if (SemSeleção(questaoSelecionada)) return;
 
-            if (questaoSelecionado == null)
-            {
-                MessageBox.Show(
-                    "Não é possível realizar esta ação sem um registro selecionado.",
-                    "Aviso",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning
-                );
-                return;
-            }
+            var dadosAtualizados = ObterDadosAtualizadosDoUsuario(questaoSelecionada);
 
-            telaQuestao = questaoSelecionado;
+            if (dadosAtualizados == null) return;
 
-            var resultado = telaQuestao.ShowDialog();
-            if (resultado != DialogResult.OK) return;
+            repositorioQuestao.Editar(questaoSelecionada.Id, dadosAtualizados);
+        }
 
-            var questaoEditado = telaQuestao;
+        private Questao ObterDadosAtualizadosDoUsuario(Questao questaoAtual)
+        {
+            questaoAtual.Enunciado = "Novo enunciado da Questão";
+            questaoAtual.Materia = "Nova matéria da questao";
 
-            repositorioQuestao.Editar(questaoSelecionado.Id, questaoEditado);
-
-            CarregarQuestoes();
+            return questaoAtual;
         }
 
         public override void Excluir()
@@ -80,46 +66,10 @@ namespace gerador_de_testes_2024.ModuloQuestão
 
             var questaoSelecionado = repositorioQuestao.SelecionarPorId(idSelecionado);
 
-            if (NoSelection(questaoSelecionado)) return;
-
-            var resposta = MessageBox.Show(
-                $"Excluir o registro \"{questaoSelecionado.enunciado}\"?",
-                "OK",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning);
-
-            if (resposta != DialogResult.Yes) return;
-
-            RealizarAção(
-                () => repositorioQuestao.Excluir(questaoSelecionado.Id),
-                questaoSelecionado, "excluído");
-        }
-
-        public override UserControl ObterListagem()
-        {
-            if (tabelaQuestao == null)
-                tabelaQuestao = new TabelaQuestaoControl();
-
-            CarregarQuestoes();
-
-            return tabelaQuestao;
-        }
-
-        private void CarregarQuestoes()
-        {
-            var Questoes = repositorioQuestao.SelecionarTodos();
-
-            tabelaQuestao.AtualizarRegistros(Questoes);
-        }
-        private bool NoSelection(Questao questao)
-        {
-            return questao == null;
-        }
-        private void RealizarAção(Action acao, Questao questao, string texto)
-        {
-            acao();
-            CarregarQuestoes();
-            // CarregarMensagem(questao, texto);
+            if (SemSeleção(questaoSelecionado)) return;
+            if (!DesejaRealmenteExcluir(questaoSelecionado)) return;
+            repositorioQuestao.Excluir(questaoSelecionado.id);
+                     
         }
     }
 }
