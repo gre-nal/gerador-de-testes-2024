@@ -18,21 +18,5 @@ namespace gerador_de_testes_2024.ModuloQuestão
             {
                 InitializeComponent();
             }
-
-            public void AtualizarRegistros(List<Questao> questaos)
-            {
-                foreach (var q in questaos)
-                    .Rows.Add(q.Id);
-            }
-
-            public int ObertRegistroSelecionado()
-            {
-                return gridQuestao.SelecionarId();
-            }
-
-            internal int ObterRegistroSelecionado()
-            {
-                throw new NotImplementedException();
-            }
         }
     }

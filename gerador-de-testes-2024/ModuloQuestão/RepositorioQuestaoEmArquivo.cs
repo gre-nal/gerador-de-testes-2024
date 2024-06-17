@@ -1,4 +1,5 @@
-﻿using gerador_de_testes_2024.WinApp.Compartilhado;
+﻿using gerador_de_testes_2024.Compartilhado;
+using gerador_de_testes_2024.ModuloQuestao;
 
 namespace gerador_de_testes_2024.ModuloQuestão
 {

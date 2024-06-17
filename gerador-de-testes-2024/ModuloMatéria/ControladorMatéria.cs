@@ -27,10 +27,10 @@ namespace gerador_de_testes_2024.ModuloMateria
         {
             var novaMateria = new Materia
             {
-                Id = repositorioMateria.PegarId(),
-                Nome = "Nome da Matéria",
-                Disciplina = "Descrição da Matéria",
-                Serie = "Série da Matéria",
+                Id = ultimoId++,
+                Nome = "Nome de matéria",
+                Disciplina = "Disciplina da matéria",
+                Serie = "Série da matéria"
             };
 
             return novaMateria;
