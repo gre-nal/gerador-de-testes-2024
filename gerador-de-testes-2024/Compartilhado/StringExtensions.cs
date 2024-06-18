@@ -1,23 +1,14 @@
-﻿using System.Globalization;
-
-namespace gerador_de_testes_2024.Compartilhado;
+﻿namespace gerador_de_testes2024.Compartilhado;
 
 public static class StringExtensions
 {
-    public static string ToTitleCase(this string textoEscolhido)
+    public static void ConfigurarDialog(this Form form)
     {
-        var textoQuebrado = textoEscolhido.Split(' ');
-
-        for (var i = 0; i < textoQuebrado.Length; i++)
-        {
-            var palavraMaiuscula = CultureInfo
-                .CurrentCulture
-                .TextInfo
-                .ToTitleCase(textoQuebrado[i].ToLower());
-
-            textoQuebrado[i] = palavraMaiuscula;
-        }
-
-        return string.Join(" ", textoQuebrado);
+        form.ShowIcon = false;
+        form.ShowInTaskbar = false;
+        form.FormBorderStyle = FormBorderStyle.FixedDialog;
+        form.StartPosition = FormStartPosition.CenterScreen;
+        form.MaximizeBox = false;
+        form.MinimizeBox = false;
     }
 }
