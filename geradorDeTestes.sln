@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "geradorDeTestes.WinApp", "gerador-de-testes-2024\geradorDeTestes.WinApp.csproj", "{8E2EFF67-1E32-405F-8CA6-20038C48ED63}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "geradorDeTestes.WinApp", "gerador-de-testes-2024\geradorDeTestes.WinApp.csproj", "{8E2EFF67-1E32-405F-8CA6-20038C48ED63}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

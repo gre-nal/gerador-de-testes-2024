@@ -1,4 +1,4 @@
-﻿namespace gerador_de_testes_2024.ModuloTeste
+﻿namespace gerador_de_testes2024.ModuloTeste
 {
     partial class TelaTesteForm
     {
@@ -28,211 +28,254 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnOK = new FontAwesome.Sharp.IconButton();
-            btnCancelar = new FontAwesome.Sharp.IconButton();
-            lblTitulo = new Label();
-            lblDisciplina = new Label();
-            lblMatéria = new Label();
-            lblQtdQuestoes = new Label();
-            groupBox1 = new GroupBox();
-            btnSortearQuestoes = new FontAwesome.Sharp.IconButton();
-            panel1 = new Panel();
-            listQuestoes = new ListBox();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
             txtTitulo = new TextBox();
             cmbDisciplina = new ComboBox();
+            label4 = new Label();
+            numQuestoes = new NumericUpDown();
             cmbMateria = new ComboBox();
-            numericUpDown1 = new NumericUpDown();
             checkBoxRecuperacao = new CheckBox();
+            groupBox1 = new GroupBox();
+            listQuestoes = new ListBox();
+            btnSortear = new Button();
+            btnGravar = new Button();
+            btnCancelar = new Button();
+            label5 = new Label();
+            groupBox2 = new GroupBox();
+            rdbSegundaSerie = new RadioButton();
+            rdbPrimeiraSerie = new RadioButton();
+            ((System.ComponentModel.ISupportInitialize)numQuestoes).BeginInit();
             groupBox1.SuspendLayout();
-            panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).BeginInit();
+            groupBox2.SuspendLayout();
             SuspendLayout();
             // 
-            // btnOK
+            // label1
             // 
-            btnOK.IconChar = FontAwesome.Sharp.IconChar.Check;
-            btnOK.IconColor = Color.Black;
-            btnOK.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnOK.Location = new Point(218, 476);
-            btnOK.Name = "btnOK";
-            btnOK.Size = new Size(101, 87);
-            btnOK.TabIndex = 0;
-            btnOK.Text = "OK";
-            btnOK.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnOK.UseVisualStyleBackColor = true;
+            label1.AutoSize = true;
+            label1.Location = new Point(36, 34);
+            label1.Name = "label1";
+            label1.Size = new Size(40, 15);
+            label1.TabIndex = 0;
+            label1.Text = "Título:";
             // 
-            // btnCancelar
+            // label2
             // 
-            btnCancelar.IconChar = FontAwesome.Sharp.IconChar.Cancel;
-            btnCancelar.IconColor = Color.Black;
-            btnCancelar.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnCancelar.Location = new Point(325, 476);
-            btnCancelar.Name = "btnCancelar";
-            btnCancelar.Size = new Size(101, 87);
-            btnCancelar.TabIndex = 1;
-            btnCancelar.Text = "Cancelar";
-            btnCancelar.TextImageRelation = TextImageRelation.ImageAboveText;
-            btnCancelar.UseVisualStyleBackColor = true;
+            label2.AutoSize = true;
+            label2.Location = new Point(16, 69);
+            label2.Name = "label2";
+            label2.Size = new Size(61, 15);
+            label2.TabIndex = 1;
+            label2.Text = "Disciplina:";
             // 
-            // lblTitulo
+            // label3
             // 
-            lblTitulo.AutoSize = true;
-            lblTitulo.Location = new Point(12, 22);
-            lblTitulo.Name = "lblTitulo";
-            lblTitulo.Size = new Size(40, 15);
-            lblTitulo.TabIndex = 2;
-            lblTitulo.Text = "Título:";
+            label3.AutoSize = true;
+            label3.Location = new Point(27, 104);
+            label3.Name = "label3";
+            label3.Size = new Size(50, 15);
+            label3.TabIndex = 2;
+            label3.Text = "Matéria:";
             // 
-            // lblDisciplina
+            // txtTitulo
             // 
-            lblDisciplina.AutoSize = true;
-            lblDisciplina.Location = new Point(12, 61);
-            lblDisciplina.Name = "lblDisciplina";
-            lblDisciplina.Size = new Size(61, 15);
-            lblDisciplina.TabIndex = 3;
-            lblDisciplina.Text = "Disciplina:";
+            txtTitulo.Location = new Point(82, 26);
+            txtTitulo.Name = "txtTitulo";
+            txtTitulo.Size = new Size(301, 23);
+            txtTitulo.TabIndex = 0;
             // 
-            // lblMatéria
+            // cmbDisciplina
             // 
-            lblMatéria.AutoSize = true;
-            lblMatéria.Location = new Point(18, 99);
-            lblMatéria.Name = "lblMatéria";
-            lblMatéria.Size = new Size(50, 15);
-            lblMatéria.TabIndex = 4;
-            lblMatéria.Text = "Matéria:";
+            cmbDisciplina.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbDisciplina.FormattingEnabled = true;
+            cmbDisciplina.Location = new Point(85, 65);
+            cmbDisciplina.Name = "cmbDisciplina";
+            cmbDisciplina.Size = new Size(142, 23);
+            cmbDisciplina.TabIndex = 1;
+            cmbDisciplina.SelectedIndexChanged += cmbDisciplina_SelectedIndexChanged;
             // 
-            // lblQtdQuestoes
+            // label4
             // 
-            lblQtdQuestoes.AutoSize = true;
-            lblQtdQuestoes.Location = new Point(218, 61);
-            lblQtdQuestoes.Name = "lblQtdQuestoes";
-            lblQtdQuestoes.Size = new Size(83, 15);
-            lblQtdQuestoes.TabIndex = 5;
-            lblQtdQuestoes.Text = "Qtd. questões:";
+            label4.AutoSize = true;
+            label4.Location = new Point(242, 73);
+            label4.Name = "label4";
+            label4.Size = new Size(85, 15);
+            label4.TabIndex = 5;
+            label4.Text = "Qtd. Questões:";
+            // 
+            // numQuestoes
+            // 
+            numQuestoes.Location = new Point(330, 71);
+            numQuestoes.Name = "numQuestoes";
+            numQuestoes.Size = new Size(53, 23);
+            numQuestoes.TabIndex = 5;
+            // 
+            // cmbMateria
+            // 
+            cmbMateria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbMateria.FormattingEnabled = true;
+            cmbMateria.Location = new Point(85, 100);
+            cmbMateria.Name = "cmbMateria";
+            cmbMateria.Size = new Size(142, 23);
+            cmbMateria.TabIndex = 3;
+            cmbMateria.SelectedIndexChanged += cmbMateria_SelectedIndexChanged;
+            // 
+            // checkBoxRecuperacao
+            // 
+            checkBoxRecuperacao.AutoSize = true;
+            checkBoxRecuperacao.Location = new Point(233, 138);
+            checkBoxRecuperacao.Name = "checkBoxRecuperacao";
+            checkBoxRecuperacao.Size = new Size(143, 19);
+            checkBoxRecuperacao.TabIndex = 2;
+            checkBoxRecuperacao.Text = "Prova de Recuperação";
+            checkBoxRecuperacao.UseVisualStyleBackColor = true;
+            checkBoxRecuperacao.CheckedChanged += checkBoxRecuperacao_CheckedChanged;
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnSortearQuestoes);
-            groupBox1.Location = new Point(0, 0);
+            groupBox1.Controls.Add(listQuestoes);
+            groupBox1.Controls.Add(btnSortear);
+            groupBox1.Location = new Point(27, 163);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(200, 94);
+            groupBox1.Size = new Size(359, 278);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Questões selecionadas";
-            // 
-            // btnSortearQuestoes
-            // 
-            btnSortearQuestoes.IconChar = FontAwesome.Sharp.IconChar.Dice;
-            btnSortearQuestoes.IconColor = Color.Black;
-            btnSortearQuestoes.IconFont = FontAwesome.Sharp.IconFont.Auto;
-            btnSortearQuestoes.Location = new Point(6, 22);
-            btnSortearQuestoes.Name = "btnSortearQuestoes";
-            btnSortearQuestoes.Size = new Size(188, 56);
-            btnSortearQuestoes.TabIndex = 0;
-            btnSortearQuestoes.Text = "Sortear questões";
-            btnSortearQuestoes.TextImageRelation = TextImageRelation.ImageBeforeText;
-            btnSortearQuestoes.UseVisualStyleBackColor = true;
-            // 
-            // panel1
-            // 
-            panel1.Controls.Add(listQuestoes);
-            panel1.Controls.Add(groupBox1);
-            panel1.Location = new Point(12, 170);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(200, 393);
-            panel1.TabIndex = 8;
+            groupBox1.Text = "Questões Selecionadas:";
             // 
             // listQuestoes
             // 
             listQuestoes.FormattingEnabled = true;
             listQuestoes.ItemHeight = 15;
-            listQuestoes.Location = new Point(0, 84);
+            listQuestoes.Location = new Point(1, 50);
             listQuestoes.Name = "listQuestoes";
-            listQuestoes.Size = new Size(200, 304);
-            listQuestoes.TabIndex = 7;
+            listQuestoes.SelectionMode = SelectionMode.None;
+            listQuestoes.Size = new Size(358, 229);
+            listQuestoes.TabIndex = 2;
             // 
-            // txtTitulo
+            // btnSortear
             // 
-            txtTitulo.Location = new Point(58, 14);
-            txtTitulo.Name = "txtTitulo";
-            txtTitulo.Size = new Size(368, 23);
-            txtTitulo.TabIndex = 9;
+            btnSortear.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnSortear.Location = new Point(79, 19);
+            btnSortear.Name = "btnSortear";
+            btnSortear.Size = new Size(121, 25);
+            btnSortear.TabIndex = 1;
+            btnSortear.Text = "Sortear Questões";
+            btnSortear.UseVisualStyleBackColor = true;
+            btnSortear.Click += btnSortear_Click;
             // 
-            // cmbDisciplina
+            // btnGravar
             // 
-            cmbDisciplina.FormattingEnabled = true;
-            cmbDisciplina.Location = new Point(79, 53);
-            cmbDisciplina.Name = "cmbDisciplina";
-            cmbDisciplina.Size = new Size(121, 23);
-            cmbDisciplina.TabIndex = 10;
+            btnGravar.DialogResult = DialogResult.OK;
+            btnGravar.Location = new Point(2, 448);
+            btnGravar.Name = "btnGravar";
+            btnGravar.Size = new Size(75, 23);
+            btnGravar.TabIndex = 7;
+            btnGravar.Text = "Gravar";
+            btnGravar.UseVisualStyleBackColor = true;
+            btnGravar.Click += btnGravar_Click;
             // 
-            // cmbMateria
+            // btnCancelar
             // 
-            cmbMateria.FormattingEnabled = true;
-            cmbMateria.Location = new Point(79, 91);
-            cmbMateria.Name = "cmbMateria";
-            cmbMateria.Size = new Size(121, 23);
-            cmbMateria.TabIndex = 11;
+            btnCancelar.DialogResult = DialogResult.Cancel;
+            btnCancelar.Location = new Point(315, 448);
+            btnCancelar.Name = "btnCancelar";
+            btnCancelar.Size = new Size(75, 23);
+            btnCancelar.TabIndex = 8;
+            btnCancelar.Text = "Cancelar";
+            btnCancelar.UseVisualStyleBackColor = true;
             // 
-            // numericUpDown1
+            // label5
             // 
-            numericUpDown1.Location = new Point(307, 53);
-            numericUpDown1.Name = "numericUpDown1";
-            numericUpDown1.Size = new Size(119, 23);
-            numericUpDown1.TabIndex = 12;
+            label5.AutoSize = true;
+            label5.Location = new Point(42, 137);
+            label5.Name = "label5";
+            label5.Size = new Size(35, 15);
+            label5.TabIndex = 12;
+            label5.Text = "Série:";
             // 
-            // checkBoxRecuperacao
+            // groupBox2
             // 
-            checkBoxRecuperacao.AutoSize = true;
-            checkBoxRecuperacao.Location = new Point(218, 95);
-            checkBoxRecuperacao.Name = "checkBoxRecuperacao";
-            checkBoxRecuperacao.Size = new Size(145, 19);
-            checkBoxRecuperacao.TabIndex = 13;
-            checkBoxRecuperacao.Text = "Prova de recuperação?";
-            checkBoxRecuperacao.UseVisualStyleBackColor = true;
+            groupBox2.Controls.Add(rdbSegundaSerie);
+            groupBox2.Controls.Add(rdbPrimeiraSerie);
+            groupBox2.Location = new Point(83, 124);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Size = new Size(144, 33);
+            groupBox2.TabIndex = 4;
+            groupBox2.TabStop = false;
+            // 
+            // rdbSegundaSerie
+            // 
+            rdbSegundaSerie.AutoSize = true;
+            rdbSegundaSerie.Location = new Point(74, 11);
+            rdbSegundaSerie.Name = "rdbSegundaSerie";
+            rdbSegundaSerie.Size = new Size(64, 19);
+            rdbSegundaSerie.TabIndex = 1;
+            rdbSegundaSerie.TabStop = true;
+            rdbSegundaSerie.Text = "2º Série";
+            rdbSegundaSerie.UseVisualStyleBackColor = true;
+            rdbSegundaSerie.CheckedChanged += rdbSegundaSerie_CheckedChanged;
+            // 
+            // rdbPrimeiraSerie
+            // 
+            rdbPrimeiraSerie.AutoSize = true;
+            rdbPrimeiraSerie.Location = new Point(4, 11);
+            rdbPrimeiraSerie.Name = "rdbPrimeiraSerie";
+            rdbPrimeiraSerie.Size = new Size(64, 19);
+            rdbPrimeiraSerie.TabIndex = 0;
+            rdbPrimeiraSerie.TabStop = true;
+            rdbPrimeiraSerie.Text = "1º Série";
+            rdbPrimeiraSerie.UseVisualStyleBackColor = true;
+            rdbPrimeiraSerie.CheckedChanged += rdbPrimeiraSerie_CheckedChanged;
             // 
             // TelaTesteForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(434, 575);
+            ClientSize = new Size(402, 478);
+            Controls.Add(groupBox2);
+            Controls.Add(label5);
+            Controls.Add(btnCancelar);
+            Controls.Add(btnGravar);
+            Controls.Add(groupBox1);
             Controls.Add(checkBoxRecuperacao);
-            Controls.Add(numericUpDown1);
             Controls.Add(cmbMateria);
+            Controls.Add(numQuestoes);
+            Controls.Add(label4);
             Controls.Add(cmbDisciplina);
             Controls.Add(txtTitulo);
-            Controls.Add(panel1);
-            Controls.Add(lblQtdQuestoes);
-            Controls.Add(lblMatéria);
-            Controls.Add(lblDisciplina);
-            Controls.Add(lblTitulo);
-            Controls.Add(btnCancelar);
-            Controls.Add(btnOK);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
             Name = "TelaTesteForm";
             Text = "Cadastro de Testes";
+            ((System.ComponentModel.ISupportInitialize)numQuestoes).EndInit();
             groupBox1.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)numericUpDown1).EndInit();
+            groupBox2.ResumeLayout(false);
+            groupBox2.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private FontAwesome.Sharp.IconButton btnOK;
-        private FontAwesome.Sharp.IconButton btnCancelar;
-        private Label lblTitulo;
-        private Label lblDisciplina;
-        private Label lblMatéria;
-        private Label lblQtdQuestoes;
-        private GroupBox groupBox1;
-        private FontAwesome.Sharp.IconButton btnSortearQuestoes;
-        private Panel panel1;
-        private ListBox listQuestoes;
+        private Label label1;
+        private Label label2;
+        private Label label3;
         private TextBox txtTitulo;
         private ComboBox cmbDisciplina;
+        private Label label4;
+        private NumericUpDown numQuestoes;
         private ComboBox cmbMateria;
-        private NumericUpDown numericUpDown1;
         private CheckBox checkBoxRecuperacao;
+        private GroupBox groupBox1;
+        private Button btnSortear;
+        private Button btnGravar;
+        private Button btnCancelar;
+        private ListBox listQuestoes;
+        private Label label5;
+        private GroupBox groupBox2;
+        private RadioButton rdbSegundaSerie;
+        private RadioButton rdbPrimeiraSerie;
     }
 }

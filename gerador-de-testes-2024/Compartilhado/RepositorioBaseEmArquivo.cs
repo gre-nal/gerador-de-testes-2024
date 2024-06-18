@@ -1,62 +1,24 @@
-﻿using iTextSharp.text.pdf;
-using iTextSharp.text;
-using System.Text.Json;
-using System.Text.Json.Serialization;
+﻿namespace gerador_de_testes2024.Compartilhado;
 
-namespace gerador_de_testes_2024.Compartilhado;
-
-public class RepositorioBaseEmArquivo<T>
+public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
 {
-    private readonly string caminho = string.Empty;
-    protected int backupId;
-    protected List<T> registros = new();
+    protected int contadorId = 1;
+    protected ContextoDados contexto;
 
-    public RepositorioBaseEmArquivo(string nomeArquivo)
+    public RepositorioBaseEmArquivo(ContextoDados contexto)
     {
-        caminho = $"C:\\temp\\GeradorTestes\\{nomeArquivo}";
-
-        registros = DeserializarRegistros();
+        this.contexto = contexto;
     }
 
-    protected int contadorId
-    {
-        get
-        {
-            if (backupId != 0) return backupId;
-            if (registros.Count != 0)
-            {
-                var lastItem = registros.LastOrDefault();
-                if (lastItem != null && lastItem.GetType().GetProperty("Id") != null)
-                {
-                    var idProperty = lastItem.GetType().GetProperty("Id");
-                    var lastItemId = (int?)idProperty.GetValue(lastItem);
-                    return lastItemId.GetValueOrDefault() + 1;
-                }
-            }
-
-            return 1;
-        }
-        set { }
-    }
-
-    public void Atualizar()
-    {
-        SerializarRegistros();
-    }
+    protected abstract List<T> ObterRegistros();
 
     public void Cadastrar(T novoRegistro)
     {
-        if (novoRegistro.GetType().GetProperty("Id") != null)
-        {
-            var idProperty = novoRegistro.GetType().GetProperty("Id");
-            idProperty.SetValue(novoRegistro, contadorId);
-        }
+        novoRegistro.Id = contadorId++;
 
-        backupId = 0;
+        ObterRegistros().Add(novoRegistro);
 
-        registros.Add(novoRegistro);
-
-        SerializarRegistros();
+        contexto.Gravar();
     }
 
     public bool Editar(int id, T novaEntidade)
@@ -66,98 +28,37 @@ public class RepositorioBaseEmArquivo<T>
         if (registro == null)
             return false;
 
-        if (registro.GetType().GetMethod("AtualizarRegistro") != null)
-        {
-            var atualizarRegistroMethod = registro.GetType().GetMethod("AtualizarRegistro");
-            atualizarRegistroMethod.Invoke(registro, new object[] { novaEntidade });
-        }
+        registro.AtualizarRegistro(novaEntidade);
 
-        SerializarRegistros();
+        contexto.Gravar();
 
         return true;
     }
 
-    public bool Excluir(int id)
+    public virtual bool Excluir(int id)
     {
-        var registro = SelecionarPorId(id);
-        if (registro != null)
-        {
-            if (registro.Equals(registros.Last())) backupId = contadorId;
-            registros.Remove(registro);
-            SerializarRegistros();
-            return true;
-        }
+        var conseguiuExcluir = ObterRegistros().Remove(SelecionarPorId(id));
 
-        return false;
-    }
+        if (!conseguiuExcluir)
+            return false;
 
-    public bool Existe(int id)
-    {
-        if (registros.Any(x => x.GetType().GetProperty("Id") != null))
-        {
-            var idProperty = registros.First().GetType().GetProperty("Id");
-            return registros.Any(x => (int?)idProperty.GetValue(x) == id);
-        }
+        contexto.Gravar();
 
-        return false;
-    }
-
-    public int PegarId()
-    {
-        return contadorId;
+        return true;
     }
 
     public List<T> SelecionarTodos()
     {
-        return registros;
+        return ObterRegistros();
     }
 
     public T SelecionarPorId(int id)
     {
-        if (registros.Any(x => x.GetType().GetProperty("Id") != null))
-        {
-            var idProperty = registros.First().GetType().GetProperty("Id");
-            return registros.FirstOrDefault(x => (int?)idProperty.GetValue(x) == id);
-        }
-
-        return default;
+        return ObterRegistros().Find(x => x.Id == id);
     }
 
-    protected void SerializarRegistros()
+    public bool Existe(int id)
     {
-        var arquivo = new FileInfo(caminho);
-
-        arquivo.Directory?.Create();
-
-        var options = new JsonSerializerOptions
-        {
-            WriteIndented = true,
-            ReferenceHandler = ReferenceHandler.Preserve,
-            PropertyNameCaseInsensitive = true
-        };
-
-        var registrosEmBytes = JsonSerializer.SerializeToUtf8Bytes(registros, options);
-
-        File.WriteAllBytes(caminho, registrosEmBytes);
-    }
-
-    protected List<T> DeserializarRegistros()
-    {
-        var arquivo = new FileInfo(caminho);
-
-        if (!arquivo.Exists)
-            return new List<T>();
-
-        var registrosEmBytes = File.ReadAllBytes(caminho);
-
-        var options = new JsonSerializerOptions
-        {
-            ReferenceHandler = ReferenceHandler.Preserve,
-            PropertyNameCaseInsensitive = true
-        };
-
-        var registros = JsonSerializer.Deserialize<List<T>>(registrosEmBytes, options);
-
-        return registros;
+        return ObterRegistros().Any(x => x.Id == id);
     }
 }
