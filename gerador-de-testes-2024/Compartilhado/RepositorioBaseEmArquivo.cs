@@ -1,24 +1,62 @@
-﻿namespace gerador_de_testes2024.Compartilhado;
+﻿using iTextSharp.text.pdf;
+using iTextSharp.text;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
-public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
+namespace gerador_de_testes_2024.Compartilhado;
+
+public class RepositorioBaseEmArquivo<T>
 {
-    protected int contadorId = 1;
-    protected ContextoDados contexto;
+    private readonly string caminho = string.Empty;
+    protected int backupId;
+    protected List<T> registros = new();
 
-    public RepositorioBaseEmArquivo(ContextoDados contexto)
+    public RepositorioBaseEmArquivo(string nomeArquivo)
     {
-        this.contexto = contexto;
+        caminho = $"C:\\temp\\GeradorTestes\\{nomeArquivo}";
+
+        registros = DeserializarRegistros();
     }
 
-    protected abstract List<T> ObterRegistros();
+    protected int contadorId
+    {
+        get
+        {
+            if (backupId != 0) return backupId;
+            if (registros.Count != 0)
+            {
+                var lastItem = registros.LastOrDefault();
+                if (lastItem != null && lastItem.GetType().GetProperty("Id") != null)
+                {
+                    var idProperty = lastItem.GetType().GetProperty("Id");
+                    var lastItemId = (int?)idProperty.GetValue(lastItem);
+                    return lastItemId.GetValueOrDefault() + 1;
+                }
+            }
+
+            return 1;
+        }
+        set { }
+    }
+
+    public void Atualizar()
+    {
+        SerializarRegistros();
+    }
 
     public void Cadastrar(T novoRegistro)
     {
-        novoRegistro.Id = contadorId++;
+        if (novoRegistro.GetType().GetProperty("Id") != null)
+        {
+            var idProperty = novoRegistro.GetType().GetProperty("Id");
+            idProperty.SetValue(novoRegistro, contadorId);
+        }
 
-        ObterRegistros().Add(novoRegistro);
+        backupId = 0;
 
-        contexto.Gravar();
+        registros.Add(novoRegistro);
+
+        SerializarRegistros();
     }
 
     public bool Editar(int id, T novaEntidade)
@@ -28,37 +66,98 @@ public abstract class RepositorioBaseEmArquivo<T> where T : EntidadeBase
         if (registro == null)
             return false;
 
-        registro.AtualizarRegistro(novaEntidade);
+        if (registro.GetType().GetMethod("AtualizarRegistro") != null)
+        {
+            var atualizarRegistroMethod = registro.GetType().GetMethod("AtualizarRegistro");
+            atualizarRegistroMethod.Invoke(registro, new object[] { novaEntidade });
+        }
 
-        contexto.Gravar();
-
-        return true;
-    }
-
-    public virtual bool Excluir(int id)
-    {
-        var conseguiuExcluir = ObterRegistros().Remove(SelecionarPorId(id));
-
-        if (!conseguiuExcluir)
-            return false;
-
-        contexto.Gravar();
+        SerializarRegistros();
 
         return true;
     }
 
-    public List<T> SelecionarTodos()
+    public bool Excluir(int id)
     {
-        return ObterRegistros();
-    }
+        var registro = SelecionarPorId(id);
+        if (registro != null)
+        {
+            if (registro.Equals(registros.Last())) backupId = contadorId;
+            registros.Remove(registro);
+            SerializarRegistros();
+            return true;
+        }
 
-    public T SelecionarPorId(int id)
-    {
-        return ObterRegistros().Find(x => x.Id == id);
+        return false;
     }
 
     public bool Existe(int id)
     {
-        return ObterRegistros().Any(x => x.Id == id);
+        if (registros.Any(x => x.GetType().GetProperty("Id") != null))
+        {
+            var idProperty = registros.First().GetType().GetProperty("Id");
+            return registros.Any(x => (int?)idProperty.GetValue(x) == id);
+        }
+
+        return false;
+    }
+
+    public int PegarId()
+    {
+        return contadorId;
+    }
+
+    public List<T> SelecionarTodos()
+    {
+        return registros;
+    }
+
+    public T SelecionarPorId(int id)
+    {
+        if (registros.Any(x => x.GetType().GetProperty("Id") != null))
+        {
+            var idProperty = registros.First().GetType().GetProperty("Id");
+            return registros.FirstOrDefault(x => (int?)idProperty.GetValue(x) == id);
+        }
+
+        return default;
+    }
+
+    protected void SerializarRegistros()
+    {
+        var arquivo = new FileInfo(caminho);
+
+        arquivo.Directory?.Create();
+
+        var options = new JsonSerializerOptions
+        {
+            WriteIndented = true,
+            ReferenceHandler = ReferenceHandler.Preserve,
+            PropertyNameCaseInsensitive = true
+        };
+
+        var registrosEmBytes = JsonSerializer.SerializeToUtf8Bytes(registros, options);
+
+        File.WriteAllBytes(caminho, registrosEmBytes);
+    }
+
+    protected List<T> DeserializarRegistros()
+    {
+        var arquivo = new FileInfo(caminho);
+
+        if (!arquivo.Exists)
+            return new List<T>();
+
+        var registrosEmBytes = File.ReadAllBytes(caminho);
+
+        var options = new JsonSerializerOptions
+        {
+            ReferenceHandler = ReferenceHandler.Preserve,
+            PropertyNameCaseInsensitive = true
+        };
+
+        var registros = JsonSerializer.Deserialize<List<T>>(registrosEmBytes, options);
+
+        return registros;
     }
 }

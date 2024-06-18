@@ -361,5 +361,3 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
-/gerador-de-testes-2024/ModuloMatéria/TelaMateriaForm.resx
-/gerador-de-testes-2024/ModuloMatéria/TelaMateriaForm.Designer.cs

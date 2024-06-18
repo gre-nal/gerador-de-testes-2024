@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace gerador_de_testes_2024.Properties {
+    using System;
     
     
     /// <summary>
@@ -56,106 +57,6 @@ namespace gerador_de_testes_2024.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnAdicionar {
-            get {
-                object obj = ResourceManager.GetObject("btnAdicionar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnConfigurar {
-            get {
-                object obj = ResourceManager.GetObject("btnConfigurar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnCopiar {
-            get {
-                object obj = ResourceManager.GetObject("btnCopiar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnCrud {
-            get {
-                object obj = ResourceManager.GetObject("btnCrud", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnEditar {
-            get {
-                object obj = ResourceManager.GetObject("btnEditar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnExcluir {
-            get {
-                object obj = ResourceManager.GetObject("btnExcluir", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnFiltrar {
-            get {
-                object obj = ResourceManager.GetObject("btnFiltrar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnHome {
-            get {
-                object obj = ResourceManager.GetObject("btnHome", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnPDF {
-            get {
-                object obj = ResourceManager.GetObject("btnPDF", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap btnVisualizar {
-            get {
-                object obj = ResourceManager.GetObject("btnVisualizar", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }

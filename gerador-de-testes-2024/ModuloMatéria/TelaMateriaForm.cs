@@ -1,4 +1,6 @@
-﻿using System;
+﻿using gerador_de_testes_2024.ModuloMateria;
+using gerador_de_testes_2024.Compartilhado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,11 +10,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace gerador_de_testes_2024.ModuloDisciplina
+namespace gerador_de_testes_2024.ModuloMatéria
 {
-    public partial class TelaDisciplinaForm : Form
+    public partial class TelaMateriaForm : Form
     {
-        public TelaDisciplinaForm()
+        public TelaMateriaForm()
         {
             InitializeComponent();
         }

@@ -1,16 +1,17 @@
-namespace gerador_de_testes2024;
-
-internal static class Program
+namespace gerador_de_testes_2024
 {
-    /// <summary>
-    ///     The main entry point for the application.
-    /// </summary>
-    [STAThread]
-    private static void Main()
+    internal static class Program
     {
-        // To customize application configuration such as set high DPI settings or default font,
-        // see https://aka.ms/applicationconfiguration.
-        ApplicationConfiguration.Initialize();
-        Application.Run(new TelaPrincipalForm());
+        /// <summary>
+        ///  The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            // To customize application configuration such as set high DPI settings or default font,
+            // see https://aka.ms/applicationconfiguration.
+            ApplicationConfiguration.Initialize();
+            Application.Run(new TelaPrincipalForm());
+        }
     }
 }
