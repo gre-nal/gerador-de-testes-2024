@@ -91,7 +91,6 @@ public partial class TelaQuestaoForm : Form
 
         foreach (Questao.Alternativa a in listAlternativas.Items)
         {
-            a.LimparRespostaCorreta();
             if (listAlternativas.CheckedItems.Contains(a)) a.Correta = true;
             alternativas.Add(a);
         }

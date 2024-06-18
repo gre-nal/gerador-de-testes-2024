@@ -1,21 +1,11 @@
-﻿using FluentValidation;
-using gerador_de_testes2024.Compartilhado;
+﻿using gerador_de_testes2024.Compartilhado;
 using gerador_de_testes2024.ModuloDisciplina;
 using gerador_de_testes2024.ModuloMateria;
 using gerador_de_testes2024.ModuloQuestao;
 
 namespace gerador_de_testes2024.ModuloTeste;
 
-public class TesteValidator : AbstractValidator<Teste>
-{
-    public TesteValidator()
-    {
-        RuleFor(teste => teste.Titulo).NotEmpty().WithMessage("O campo \"Enunciado\" é obrigatório");
-        RuleFor(teste => teste.Serie).NotEmpty().WithMessage("É necessário selecionar uma \"Série\"");
-        RuleFor(teste => teste.Materia).NotNull().When(teste => !teste.Recuperacao)
-            .WithMessage("É necessário selecionar uma \"Matéria\"");
-    }
-}
+
 
 public class Teste : EntidadeBase
 {

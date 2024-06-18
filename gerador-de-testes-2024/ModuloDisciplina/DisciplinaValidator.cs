@@ -1,5 +1,12 @@
-﻿namespace gerador_de_testes_2024.ModuloDisciplina;
+﻿using FluentValidation;
 
-internal class DisciplinaValidator
+namespace gerador_de_testes2024.ModuloDisciplina;
+
+public class DisciplinaValidator : AbstractValidator<Disciplina>
 {
+    public DisciplinaValidator()
+    {
+        RuleFor(d => d.Nome)
+            .NotEmpty().WithMessage("O campo \"nome\" é obrigatório");
+    }
 }

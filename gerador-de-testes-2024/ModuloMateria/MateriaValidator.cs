@@ -1,5 +1,15 @@
-﻿namespace gerador_de_testes_2024.ModuloMateria;
+﻿using FluentValidation;
 
-internal class MateriaValidator
+namespace gerador_de_testes2024.ModuloMateria;
+
+public class MateriaValidator : AbstractValidator<Materia>
 {
+    public MateriaValidator()
+    {
+        RuleFor(m => m.Nome)
+            .NotEmpty().WithMessage("O campo \"nome\" é obrigatório");
+
+        RuleFor(m => m.Serie)
+            .NotEmpty().WithMessage("Ao menos uma das \"séries\" deve ser selecionada");
+    }
 }
