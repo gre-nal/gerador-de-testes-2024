@@ -1,4 +1,6 @@
-﻿namespace gerador_de_testes_2024.ModuloMatéria
+﻿
+
+namespace gerador_de_testes_2024.ModuloMatéria
 {
     partial class TelaMateriaForm
     {
@@ -71,6 +73,7 @@
             btnOK.Text = "OK";
             btnOK.TextImageRelation = TextImageRelation.ImageAboveText;
             btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += btnOK_Click;
             // 
             // btnCancelar
             // 
@@ -121,6 +124,7 @@
             rdbPrimeira.TabStop = true;
             rdbPrimeira.Text = "Primeira série";
             rdbPrimeira.UseVisualStyleBackColor = true;
+            rdbPrimeira.Click += RdbPrimeira_Click;
             // 
             // rdbSegunda
             // 
@@ -132,6 +136,7 @@
             rdbSegunda.TabStop = true;
             rdbSegunda.Text = "Segunda série";
             rdbSegunda.UseVisualStyleBackColor = true;
+            rdbSegunda.Click += RdbSegunda_Click;
             // 
             // txtNome
             // 
@@ -168,6 +173,23 @@
             ResumeLayout(false);
             PerformLayout();
         }
+
+        private void btnOK_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RdbPrimeira_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RdbSegunda_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+
 
         #endregion
 

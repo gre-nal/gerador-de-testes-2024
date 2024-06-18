@@ -3,13 +3,13 @@ using gerador_de_testes_2024.ModuloQuestao;
 
 namespace gerador_de_testes_2024.ModuloQuestão
 {
-    internal class RepositorioQuestaoEmArquivo : RepositorioBaseEmArquivo<Questao>, IRepositorioQuestao
+    public class RepositorioQuestaoEmArquivo : RepositorioBaseEmArquivo<Questao>, IRepositorioQuestao
     {
         public RepositorioQuestaoEmArquivo() : base("Questões.json")
         {
         }
 
-        public void Cadastrar(TelaQuestaoForm novaQuestao)
+        public void Cadastrar(TelaQuestãoForm novaQuestao)
         {
             throw new NotImplementedException();
         }

@@ -1,14 +1,18 @@
-﻿namespace gerador_de_testes_2024.ModuloQuestao
+﻿using gerador_de_testes_2024.Compartilhado;
+
+namespace gerador_de_testes_2024.ModuloQuestao
 {
     public class Alternativa
     {
         public string Texto { get; set; }
         public bool Correta { get; set; }
+        public int Id { get; set; }
 
-        public Alternativa(string texto, bool correta)
+        public Alternativa(string texto, bool correta, int id)
         {
             Texto = texto;
             Correta = correta;
+            id = id;
         }
     }
 

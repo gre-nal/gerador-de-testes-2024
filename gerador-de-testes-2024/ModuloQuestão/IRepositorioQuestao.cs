@@ -1,4 +1,5 @@
-﻿using System;
+﻿using gerador_de_testes_2024.ModuloQuestao;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,5 @@ public interface IRepositorioQuestao
     List<Questao> SelecionarTodos();
     int PegarId();
     void Atualizar();
-    void Cadastrar(TelaQuestaoForm novaQuestao);
     void Editar(int id, object questaoEditado);
 }

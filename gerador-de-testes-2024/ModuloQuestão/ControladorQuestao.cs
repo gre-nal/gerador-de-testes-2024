@@ -1,12 +1,18 @@
 ﻿using gerador_de_testes_2024.Compartilhado;
 using gerador_de_testes_2024.ModuloQuestao;
+using gerador_de_testes_2024.ModuloQuestão;
 
-namespace gerador_de_testes_2024.ModuloQuestão
+namespace gerador_de_testes_2024.ModuloQuestao
 {
-    public class ControladorQuestao(IRepositorioQuestao repositorioQuestao) : ControladorBase
+    public class ControladorQuestao : ControladorBase
     {
-        private readonly IRepositorioQuestao repositorioQuestao = repositorioQuestao;
+        private readonly IRepositorioQuestao repositorioQuestao;
         private TabelaQuestaoControl tabelaQuestao;
+
+        public ControladorQuestao(IRepositorioQuestao repositorioQuestao)
+        {
+            this.repositorioQuestao = repositorioQuestao;
+        }
 
         public override string TipoCadastro => "Questões";
 
@@ -31,7 +37,7 @@ namespace gerador_de_testes_2024.ModuloQuestão
             {
                 Id = repositorioQuestao.PegarId(),
                 Enunciado = "Enunciado da questão",
-                Materia = "Mateira da questão"
+                Materia = "Matéria da questão"
             };
 
             return novaQuestao;
@@ -55,7 +61,7 @@ namespace gerador_de_testes_2024.ModuloQuestão
         private Questao ObterDadosAtualizadosDoUsuario(Questao questaoAtual)
         {
             questaoAtual.Enunciado = "Novo enunciado da Questão";
-            questaoAtual.Materia = "Nova matéria da questao";
+            questaoAtual.Materia = "Nova matéria da questão";
 
             return questaoAtual;
         }
@@ -64,12 +70,11 @@ namespace gerador_de_testes_2024.ModuloQuestão
         {
             var idSelecionado = tabelaQuestao.ObterRegistroSelecionado();
 
-            var questaoSelecionado = repositorioQuestao.SelecionarPorId(idSelecionado);
+            var questaoSelecionada = repositorioQuestao.SelecionarPorId(idSelecionado);
 
-            if (SemSeleção(questaoSelecionado)) return;
-            if (!DesejaRealmenteExcluir(questaoSelecionado)) return;
-            repositorioQuestao.Excluir(questaoSelecionado.id);
-                     
+            if (SemSeleção(questaoSelecionada)) return;
+            if (!DesejaRealmenteExcluir(questaoSelecionada)) return;
+            repositorioQuestao.Excluir(questaoSelecionada.Id);
         }
     }
 }
