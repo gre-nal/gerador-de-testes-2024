@@ -6,11 +6,6 @@ namespace gerador_de_testes2024.ModuloQuestao;
 
 public class Questao : EntidadeBase
 {
-    public Materia Materia { get; set; }
-    public string Enunciado { get; set; }
-    public List<Alternativa> Alternativas { get; set; }
-    public List<Teste> Testes { get; set; }
-
     public Questao()
     {
         Alternativas = new List<Alternativa>();
@@ -24,10 +19,16 @@ public class Questao : EntidadeBase
         Alternativas = alternativas;
     }
 
-    public Questao(int id, Materia materia, string enunciado, List<Alternativa> alternativas) : this(materia, enunciado, alternativas)
+    public Questao(int id, Materia materia, string enunciado, List<Alternativa> alternativas) : this(materia, enunciado,
+        alternativas)
     {
         Id = id;
     }
+
+    public Materia Materia { get; set; }
+    public string Enunciado { get; set; }
+    public List<Alternativa> Alternativas { get; set; }
+    public List<Teste> Testes { get; set; }
 
     public override void AtualizarRegistro(EntidadeBase novoRegistro)
     {
@@ -44,25 +45,40 @@ public class Questao : EntidadeBase
         return validationResult.Errors.Select(e => e.ErrorMessage).ToList();
     }
 
-    public Alternativa RetornarRespostaCorreta() => Alternativas.FirstOrDefault(a => a.Correta);
+    public Alternativa RetornarRespostaCorreta()
+    {
+        return Alternativas.FirstOrDefault(a => a.Correta);
+    }
 
-    public int QuantidadeRespostaCorreta() => Alternativas.Count(a => a.Correta);
+    public int QuantidadeRespostaCorreta()
+    {
+        return Alternativas.Count(a => a.Correta);
+    }
 
-    public bool EnunciadoIgual(List<Questao> questoes) => questoes.Any(q => q.Enunciado == Enunciado);
+    public bool EnunciadoIgual(List<Questao> questoes)
+    {
+        return questoes.Any(q => q.Enunciado == Enunciado);
+    }
 
-    public override string ToString() => Enunciado;
+    public override string ToString()
+    {
+        return Enunciado;
+    }
 
     public class Alternativa
     {
-        public string Descricao { get; set; }
-        public bool Correta { get; set; }
-
         public Alternativa(string descricao, bool correta = false)
         {
             Descricao = descricao;
             Correta = correta;
         }
 
-        public override string ToString() => Descricao;
+        public string Descricao { get; set; }
+        public bool Correta { get; set; }
+
+        public override string ToString()
+        {
+            return Descricao;
+        }
     }
 }

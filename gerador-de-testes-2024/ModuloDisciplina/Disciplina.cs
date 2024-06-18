@@ -7,10 +7,6 @@ namespace gerador_de_testes2024.ModuloDisciplina;
 
 public class Disciplina : EntidadeBase
 {
-    public string Nome { get; set; }
-    public List<Materia> Materias { get; set; }
-    public List<Teste> Testes { get; set; }
-
     public Disciplina()
     {
         Materias = new List<Materia>();
@@ -26,6 +22,10 @@ public class Disciplina : EntidadeBase
     {
         Id = id;
     }
+
+    public string Nome { get; set; }
+    public List<Materia> Materias { get; set; }
+    public List<Teste> Testes { get; set; }
 
     public override void AtualizarRegistro(EntidadeBase novoRegistro)
     {

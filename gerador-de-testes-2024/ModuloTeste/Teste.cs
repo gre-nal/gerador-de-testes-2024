@@ -5,8 +5,6 @@ using gerador_de_testes2024.ModuloQuestao;
 
 namespace gerador_de_testes2024.ModuloTeste;
 
-
-
 public class Teste : EntidadeBase
 {
     public Teste()
