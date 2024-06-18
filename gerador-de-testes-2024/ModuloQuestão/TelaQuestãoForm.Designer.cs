@@ -35,18 +35,18 @@
             lblResposta = new Label();
             btnAdicionar = new FontAwesome.Sharp.IconButton();
             groupBox1 = new GroupBox();
-            checkA = new CheckBox();
-            checkB = new CheckBox();
-            checkC = new CheckBox();
-            checkBox1 = new CheckBox();
+            txtD = new TextBox();
+            txtC = new TextBox();
+            txtB = new TextBox();
+            txtA = new TextBox();
             btnRemover = new FontAwesome.Sharp.IconButton();
+            checkBox1 = new CheckBox();
+            checkC = new CheckBox();
+            checkB = new CheckBox();
+            checkA = new CheckBox();
             cmbMateria = new ComboBox();
             richTextBox1 = new RichTextBox();
             richTextBox2 = new RichTextBox();
-            txtA = new TextBox();
-            txtB = new TextBox();
-            txtC = new TextBox();
-            txtD = new TextBox();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -62,6 +62,7 @@
             btnOK.Text = "OK";
             btnOK.TextImageRelation = TextImageRelation.ImageAboveText;
             btnOK.UseVisualStyleBackColor = true;
+            btnOK.Click += BtnOK_Click;
             // 
             // btnCancelar
             // 
@@ -134,41 +135,33 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Alternativas:";
             // 
-            // checkA
+            // txtD
             // 
-            checkA.AutoSize = true;
-            checkA.Location = new Point(6, 27);
-            checkA.Name = "checkA";
-            checkA.Size = new Size(15, 14);
-            checkA.TabIndex = 7;
-            checkA.UseVisualStyleBackColor = true;
+            txtD.Location = new Point(27, 124);
+            txtD.Name = "txtD";
+            txtD.Size = new Size(100, 23);
+            txtD.TabIndex = 14;
             // 
-            // checkB
+            // txtC
             // 
-            checkB.AutoSize = true;
-            checkB.Location = new Point(6, 56);
-            checkB.Name = "checkB";
-            checkB.Size = new Size(15, 14);
-            checkB.TabIndex = 8;
-            checkB.UseVisualStyleBackColor = true;
+            txtC.Location = new Point(27, 90);
+            txtC.Name = "txtC";
+            txtC.Size = new Size(100, 23);
+            txtC.TabIndex = 13;
             // 
-            // checkC
+            // txtB
             // 
-            checkC.AutoSize = true;
-            checkC.Location = new Point(6, 94);
-            checkC.Name = "checkC";
-            checkC.Size = new Size(15, 14);
-            checkC.TabIndex = 9;
-            checkC.UseVisualStyleBackColor = true;
+            txtB.Location = new Point(27, 52);
+            txtB.Name = "txtB";
+            txtB.Size = new Size(100, 23);
+            txtB.TabIndex = 12;
             // 
-            // checkBox1
+            // txtA
             // 
-            checkBox1.AutoSize = true;
-            checkBox1.Location = new Point(6, 128);
-            checkBox1.Name = "checkBox1";
-            checkBox1.Size = new Size(15, 14);
-            checkBox1.TabIndex = 10;
-            checkBox1.UseVisualStyleBackColor = true;
+            txtA.Location = new Point(27, 23);
+            txtA.Name = "txtA";
+            txtA.Size = new Size(100, 23);
+            txtA.TabIndex = 11;
             // 
             // btnRemover
             // 
@@ -182,6 +175,43 @@
             btnRemover.Text = "Remover";
             btnRemover.TextImageRelation = TextImageRelation.ImageAboveText;
             btnRemover.UseVisualStyleBackColor = true;
+            btnRemover.Click += btnRemover_Click;
+            // 
+            // checkBox1
+            // 
+            checkBox1.AutoSize = true;
+            checkBox1.Location = new Point(6, 128);
+            checkBox1.Name = "checkBox1";
+            checkBox1.Size = new Size(15, 14);
+            checkBox1.TabIndex = 10;
+            checkBox1.UseVisualStyleBackColor = true;
+            // 
+            // checkC
+            // 
+            checkC.AutoSize = true;
+            checkC.Location = new Point(6, 94);
+            checkC.Name = "checkC";
+            checkC.Size = new Size(15, 14);
+            checkC.TabIndex = 9;
+            checkC.UseVisualStyleBackColor = true;
+            // 
+            // checkB
+            // 
+            checkB.AutoSize = true;
+            checkB.Location = new Point(6, 56);
+            checkB.Name = "checkB";
+            checkB.Size = new Size(15, 14);
+            checkB.TabIndex = 8;
+            checkB.UseVisualStyleBackColor = true;
+            // 
+            // checkA
+            // 
+            checkA.AutoSize = true;
+            checkA.Location = new Point(6, 27);
+            checkA.Name = "checkA";
+            checkA.Size = new Size(15, 14);
+            checkA.TabIndex = 7;
+            checkA.UseVisualStyleBackColor = true;
             // 
             // cmbMateria
             // 
@@ -207,34 +237,6 @@
             richTextBox2.TabIndex = 9;
             richTextBox2.Text = "";
             // 
-            // txtA
-            // 
-            txtA.Location = new Point(27, 23);
-            txtA.Name = "txtA";
-            txtA.Size = new Size(100, 23);
-            txtA.TabIndex = 11;
-            // 
-            // txtB
-            // 
-            txtB.Location = new Point(27, 52);
-            txtB.Name = "txtB";
-            txtB.Size = new Size(100, 23);
-            txtB.TabIndex = 12;
-            // 
-            // txtC
-            // 
-            txtC.Location = new Point(27, 90);
-            txtC.Name = "txtC";
-            txtC.Size = new Size(100, 23);
-            txtC.TabIndex = 13;
-            // 
-            // txtD
-            // 
-            txtD.Location = new Point(27, 124);
-            txtD.Name = "txtD";
-            txtD.Size = new Size(100, 23);
-            txtD.TabIndex = 14;
-            // 
             // TelaQuestãoForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -256,6 +258,16 @@
             groupBox1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void BtnOK_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion

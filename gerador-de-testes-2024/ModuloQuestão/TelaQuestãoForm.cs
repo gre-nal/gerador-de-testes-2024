@@ -14,9 +14,29 @@ namespace gerador_de_testes_2024.ModuloQuestão
 {
     public partial class TelaQuestãoForm : Form
     {
-            public TelaQuestãoForm()
+        public TelaQuestãoForm()
+        {
+            InitializeComponent();
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e, List<Alternativa> Alternativas)
+        {
+            int contadorRemove = 0;
+            Alternativa alternativaParaRemover = Alternativas.FirstOrDefault(a => a.Id == contadorRemove);
+
+            if (alternativaParaRemover != null)
             {
-                InitializeComponent();
+                Alternativas.Remove(alternativaParaRemover);
+                Console.WriteLine("Alternativa removida com sucesso.");
+            }
+            else
+            {
+                Console.WriteLine("Alternativa não encontrada.");
             }
         }
+        private void BtnOK_Click(object sender, EventArgs e, List<Alternativa> Alternativas, string Enunciado, string Materia, string Texto, string Corrta)
+        {
+            
+        }
     }
+}

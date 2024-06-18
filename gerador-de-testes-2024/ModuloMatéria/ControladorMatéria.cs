@@ -6,7 +6,7 @@ namespace gerador_de_testes_2024.ModuloMateria
     public class ControladorMateria(IRepositorioMateria repositorioMateria) : ControladorBase
     {
         private List<Materia> materias = new List<Materia>();
-        private int ultimoId = 0;
+        public int ultimoId = 0;
         private readonly IRepositorioMateria repositorioMateria = repositorioMateria;
         private TabelaMateriaControl tabelaMateria;
         public override string TipoCadastro => "Matéria";
@@ -21,6 +21,7 @@ namespace gerador_de_testes_2024.ModuloMateria
             if (novaMateria == null) return;
 
             repositorioMateria.Cadastrar(novaMateria);
+            materias.Add(novaMateria);
         }
 
         private Materia ObterDadosMateriaDoUsuario()
